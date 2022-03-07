@@ -20,6 +20,7 @@ namespace 練習1
             int tip_percent = 15;
             int tax_percent = 8;
             int sum = Convert.ToInt32(meal_cost) + tip_percent + tax_percent;
+            int sum2 = (int)(meal_cost + tip_percent + tax_percent);
             Console.WriteLine($"您總共花費:{sum}");
 
         }
