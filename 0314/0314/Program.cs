@@ -26,7 +26,7 @@ namespace _0314
                 Console.WriteLine("Not Weird");
             }
 
-            Console.WriteLine("test");
+            
         }
     }
 }
