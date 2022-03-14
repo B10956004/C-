@@ -25,18 +25,32 @@ namespace _0314
             //{
             //    Console.WriteLine("Not Weird");
             //}
-
-            int n = 0;
+            Console.WriteLine("練習1");
+            int n;
             Console.WriteLine("請輸入N:");
             n = Convert.ToInt32(Console.ReadLine());
             for(int i = 0; i < n; i++)
             {
-                for(int j = 0; j < i; j++)
+                for(int j = 0; j <= i; j++)
                 {
-                    Console.WriteLine("*");
+                    Console.Write("*");
                 }
+                Console.Write("\n");
             }
-
+            Console.WriteLine("練習2");
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine(n+"*"+i+"="+n * i);
+            }
+            Console.WriteLine("練習3");
+            for(int i = 1; i < 10; i++)
+            {
+                for(int j = 1; j < 10; j++)
+                {
+                    Console.Write(i + "*" + j + "=" + i * j+" ");
+                }
+                Console.Write("\n");
+            }
         }
     }
 }
