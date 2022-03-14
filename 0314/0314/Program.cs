@@ -67,6 +67,7 @@ namespace _0314
             Console.WriteLine("請輸入座號(1-5)");
             int num = Convert.ToInt32(Console.ReadLine());
             string[,] student = new string[6, 5] { { "座號", "姓名", "電腦概論", "程式設計", "動畫製作" },{ "1", "Jack", "80", "75","60" },{ "2", "Mary", "65", "67", "62" },{ "3", "Tom", "100", "93", "91" },{ "4", "Grace", "98", "25", "50" },{ "5", "Alice", "83", "82", "87" } };
+            //放共6列5欄資料
             for(int i = 0; i < 5; i++)
             {
                 Console.Write(student[0, i]+":");
