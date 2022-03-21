@@ -37,9 +37,13 @@ namespace _0321
               override => 覆蓋基礎類別方法。
               new => 隱藏基礎類別方法。
             http://softrei.blogspot.com/2016/07/override.html
+
+            https://ad57475747.medium.com/c-%E9%9B%9C%E8%A8%98-%E4%BB%8B%E9%9D%A2-interface-%E6%8A%BD%E8%B1%A1-abstract-%E8%99%9B%E6%93%AC-virtual-%E4%B9%8B%E6%88%91%E8%A6%8B-dc3c5878bb80
+
             */
 
             //await MyHttpClientAsync();//非同步await 等待request 否則一傳送完就結束主執行緒
+
             bool play = true;
             while (play)
             {
@@ -58,6 +62,7 @@ namespace _0321
                         Console.WriteLine("數字介於" + min + "~" + max + "之間，剩下" + count + "次機會");
                     }
                     int user = Convert.ToInt32(Console.ReadLine());
+                    count--;
                     if (user > max)
                     {
                         Console.WriteLine("請勿輸入大於最大數字");
@@ -83,8 +88,6 @@ namespace _0321
                         break;
 
                     }
-                    count--;
-
                     if (user!=ans&&count == 0)
                     {
                         Console.WriteLine("你輸了!正確數字為:" + ans);
@@ -116,6 +119,9 @@ namespace _0321
             Random random1 = new Random();
             return random1.Next(min, max + 1);
         }
+
+
+
         // HttpClient is intended to be instantiated once per application, rather than per-use. See Remarks.
         static readonly HttpClient client = new HttpClient();
 
