@@ -39,8 +39,88 @@ namespace _0321
             http://softrei.blogspot.com/2016/07/override.html
             */
 
-            await MyHttpClientAsync();//非同步await 等待request 否則一傳送完就結束主執行緒
+            //await MyHttpClientAsync();//非同步await 等待request 否則一傳送完就結束主執行緒
+            bool play = true;
+            while (play)
+            {
+                int ans = MyRandom(1, 100);
+                int max = 100;
+                int min = 1;
+                int count = 5;
+                while (true)
+                {
+                    if (count == 5)
+                    {
+                        Console.WriteLine("數字介於" + min + "~" + max + "之間，有" + count + "次機會");
+                    }
+                    else
+                    {
+                        Console.WriteLine("數字介於" + min + "~" + max + "之間，剩下" + count + "次機會");
+                    }
+                    int user = Convert.ToInt32(Console.ReadLine());
+                    if (user > max)
+                    {
+                        Console.WriteLine("請勿輸入大於最大數字");
+                        continue;
+                    }
+                    if (user < min)
+                    {
+                        Console.WriteLine("請勿輸入小於最小數字");
+                        continue;
+                    }
+                    if (ans > user)
+                    {
+                        min = user;
+                    }
+                    else
+                    {
+                        max = user;
+                    }
+                    if (user == ans)
+                    {
+                        Console.WriteLine("你贏了");
+                        Console.WriteLine("是否繼續遊玩?(輸入1為繼續，0為結束)");
+                        int playAgain = Convert.ToInt32(Console.ReadLine());
+                        if (playAgain == 1)
+                        {
+                            play = true;
+                            break;
+                        }
+                        else
+                        {
+                            play = false;
+                            break;
+                        }
+                    }
+                    count--;
 
+                    if (count == 0)
+                    {
+                        Console.WriteLine("你輸了!正確數字為:" + ans);
+                        Console.WriteLine("是否繼續遊玩?(輸入1為繼續，0為結束)");
+                        int playAgain=Convert.ToInt32(Console.ReadLine());
+                        if (playAgain == 1)
+                        {
+                            play = true;
+                            break;
+                        }
+                        else
+                        {
+                            play = false;
+                            break;
+                        }
+
+                    }
+                }
+            }
+            
+            
+       
+        }
+        static private int MyRandom(int min,int max)
+        {
+            Random random1 = new Random();
+            return random1.Next(min, max + 1);
         }
         // HttpClient is intended to be instantiated once per application, rather than per-use. See Remarks.
         static readonly HttpClient client = new HttpClient();
