@@ -62,7 +62,6 @@ namespace _0321
                         Console.WriteLine("數字介於" + min + "~" + max + "之間，剩下" + count + "次機會");
                     }
                     int user = Convert.ToInt32(Console.ReadLine());
-                    count--;
                     if (user > max)
                     {
                         Console.WriteLine("請勿輸入大於最大數字");
@@ -73,6 +72,7 @@ namespace _0321
                         Console.WriteLine("請勿輸入小於最小數字");
                         continue;
                     }
+                    count--;
                     if (ans > user)
                     {
                         min = user;
@@ -94,9 +94,10 @@ namespace _0321
                         play=PlayAgain();
                         break;
                     }
-                    
                 }
             }
+            IFileService fileService = new FileServiceA();
+            fileService.UploadFile();
             
         }
         static private bool PlayAgain()
