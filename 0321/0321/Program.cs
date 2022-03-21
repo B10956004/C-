@@ -78,45 +78,39 @@ namespace _0321
                     }
                     if (user == ans)
                     {
-                        Console.WriteLine("你贏了");
-                        Console.WriteLine("是否繼續遊玩?(輸入1為繼續，0為結束)");
-                        int playAgain = Convert.ToInt32(Console.ReadLine());
-                        if (playAgain == 1)
-                        {
-                            play = true;
-                            break;
-                        }
-                        else
-                        {
-                            play = false;
-                            break;
-                        }
+                        Console.WriteLine("你贏了!正確數字為:" + ans);
+                        play=PlayAgain();
+                        break;
+
                     }
                     count--;
 
-                    if (count == 0)
+                    if (user!=ans&&count == 0)
                     {
                         Console.WriteLine("你輸了!正確數字為:" + ans);
-                        Console.WriteLine("是否繼續遊玩?(輸入1為繼續，0為結束)");
-                        int playAgain=Convert.ToInt32(Console.ReadLine());
-                        if (playAgain == 1)
-                        {
-                            play = true;
-                            break;
-                        }
-                        else
-                        {
-                            play = false;
-                            break;
-                        }
-
+                        play=PlayAgain();
+                        break;
                     }
+                    
                 }
             }
             
-            
-       
         }
+        static private bool PlayAgain()
+        {
+            Console.WriteLine("是否繼續遊玩?(輸入1為繼續，0為結束)");
+            int playAgain = Convert.ToInt32(Console.ReadLine());
+            if (playAgain == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
         static private int MyRandom(int min,int max)
         {
             Random random1 = new Random();
