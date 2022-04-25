@@ -40,6 +40,7 @@ namespace _0425_Client
                 return;
             }
             button1.Enabled = false;                  //讓連線按鍵失效，避免重複連線 
+            button2.Enabled = true;
         }
         //傳送訊息給 Server (Send Message to the Server)
         private void Send(string Str)
@@ -55,6 +56,22 @@ namespace _0425_Client
                 Send("9" + User); //傳送自己的離線訊息給伺服器
                 T.Close();        //關閉網路通訊器T
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (button1.Enabled == false)
+            {
+                Send("9" + User); //傳送自己的離線訊息給伺服器
+                T.Close();        //關閉網路通訊器T
+                button1.Enabled = true;
+            }
+            button2.Enabled = false;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            button2.Enabled = false;
         }
     }
 }
