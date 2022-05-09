@@ -12,6 +12,7 @@
 <input type='text' id="Urltext">可找地點與觀測站名稱</input>
 <BR>
 <button id='btn_get' class="btn btn-primary">取回資料</button>
+<button id='btn_reset' class="btn btn-danger">清除搜尋</button>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -31,8 +32,10 @@
     document.getElementById("btn_get").onclick = function() {
         var InputText = document.getElementById("Urltext").value; //抓值
         fn_get(InputText)
-        document.getElementById("Urltext").value = "";
     };
+    document.getElementById("btn_reset").onclick = function() {
+        document.getElementById("Urltext").value = "";
+    }
 
     //var dom_ajaxResult = document.getElementById('ajax_result'); for<div id=ajax_result>
     var dom_tableBody = document.getElementById('table_body');
