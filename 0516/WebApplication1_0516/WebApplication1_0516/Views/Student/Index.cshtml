@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Student>
+@{
+    int total=int.Parse(ViewData["Total"].ToString());
+    int pageCount=total/10+(total%10>0?1:0);
+    int nowPage=int.Parse(ViewData["nowPage"].ToString());
+    int seqNo=1+(nowPage-1)*10;
+}
+<div class="text-center">
+    <h1>學生管理系統</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td scope="col">序號</td>
+                <td scope="col">學生姓名</td>
+                <td scope="col">學生學號</td>
+                <td scope="col">GitHub連結</td>
+                <td scope="col"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {<tr>
+                <td scope="col">@seqNo</td>
+                <td scope="col">@item.studentName</td>
+                <td scope="col">@item.studentNo</td>
+                <td scope="col">@item.githubLink</td>
+                <td>
+                    @Html.ActionLink("修改","Update",new {studentNo=item.studentNo})
+                    @Html.ActionLink("Details","Details",new {id=item.studentNo})<!--尚未實做-->
+                    @Html.ActionLink("Delete","Delete",new {studentNo=item.studentNo},new{onclick ="return confirm('"+item.studentNo+"確定要刪除這位學生?');"})<!--未做post-->
+                </td>
+                </tr>
+                seqNo++;
+            }
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            @if(nowPage>1){
+                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-nowPage="@(nowPage-1)">Previous</a></li>
+            }
+            @for(int i=1;i<=pageCount;i++){
+                var active=(i==nowPage)?"active":"";
+                <li class="page-item @active"><a class="page-link" asp-action="Index" asp-route-nowPage="@i">@i</a></li>
+            }
+            @if(nowPage<pageCount){
+                <li class="page-item"><a class="page-link" asp-action="Index" asp-route-nowPage="@(nowPage+1)">Next</a></li>
+            }
+        </ul>
+    </nav>
+</div>
